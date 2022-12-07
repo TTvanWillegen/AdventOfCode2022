@@ -91,6 +91,9 @@ if __name__ == "__main__":
                 if wait and countdown_f and countdown_f.group(1):
                     countdown_s = countdown_f.group(1)
                     print(day_name, "This day is not yet unlocked... It will take about", self._s_to_text(countdown_s), "seconds to unlock.")
+                    if int(countdown_s) > 3600:
+                        print("That is longer than an hour, exiting...")
+                        exit(0)
                     print("Waiting to unlock automatically... To cancel, terminate script.")
                     sleep(int(countdown_s))
                     print("Unlocking...")
